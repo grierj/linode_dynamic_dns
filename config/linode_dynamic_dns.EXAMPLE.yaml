@@ -1,0 +1,18 @@
+# A URL that returns a body of the IP address that requested it.  You can find 
+# ip.rb in the bin directory.
+# Feel free host this yourself on your linode that you probably have because
+# that's the DNS this updates :)
+ip_url: "http://hellspenguins.org/cgi-bin/ip.rb"
+
+# This is your API key.  It's secret.  Don't check it into git.  You can
+# get your API key from https://manager.linode.com/profile/api
+api_key: abcd1234
+
+# The domain that the dynamic record lives in
+domain: example.com
+
+# The name of the record, "home" or "dyn" or something like that works
+record: dyn
+
+
+
