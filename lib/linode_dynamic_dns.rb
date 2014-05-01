@@ -18,8 +18,8 @@ module LinodeDynamicDns
 
   def self.get_domain_id
     api.domain.list.each do |dom|
-      if dom['domain'] == config.domain
-        return dom['domainid']
+      if dom.domain == config.domain
+        return dom.domainid
       end
     end
     raise "No domain found matching #{config.domain}"
@@ -27,8 +27,8 @@ module LinodeDynamicDns
 
   def self.get_record_id(domain_id)
     api.domain.resource.list(:DomainId => domain_id).each do |res|
-      if res['name'] == config.record
-        return res['resourceid']
+      if res.name == config.record
+        return res.resourceid
       end
     end
     raise "No resource found matching #{config.record}"
