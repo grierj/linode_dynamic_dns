@@ -4,6 +4,20 @@ This is a really simple gem to update a dns entry via Linode's DNS API to mimic 
 
 ## Installation
 
+### Rubygem
+
+To install from rubygems:
+
+    gem install linode_dynamic_dns
+
+You can then grab the example config file (if you need it) with:
+
+    curl -o ~/linode_dynamic_dns.yaml https://raw.githubusercontent.com/grierj/linode_dynamic_dns/master/config/linode_dynamic_dns.EXAMPLE.yaml
+
+Modify the config file according to the comments
+
+### With bundler
+
 This gem is generally used in a standalone manner using bundler.  To install it run:
 
     git clone https://github.com/grierj/linode_dynamic_dns.git
@@ -22,11 +36,26 @@ In your Linode DNS manager pick the "Domain Zone" you want to put the record in.
 
 ## Usage
 
-After your config file is up to date, simply run:
+### Rubygem
+
+Run the updater like:
+
+    linode_dynamic_dns -c ~/linode_dynamic_dns.yaml -v
+
+If you don't like the status messages, remove the -v
+If you put your config file somewhere else, update the path
+
+### Bundler
+
+Run the updater via bundler like
 
     bundle exec bin/linode_dynamic_dns
     
-This should update whatever record you configured to whatever your IP address is.  To run this continuously use runit or daemontools or whatever your favorite process minder is.
+This should update whatever record you configured to whatever your IP address is.
+
+## Keep on runnin'
+
+You can run this in a loop every 5 or so minutes, or use cron, or just run it from time to time by hand
 
 ## Contributing
 
