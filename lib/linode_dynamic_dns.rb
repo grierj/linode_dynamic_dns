@@ -7,6 +7,10 @@ module LinodeDynamicDns
     @api ||= Linode.new(:api_key => config.api_key)
   end
 
+  def self.ttl
+    config.ttl || 300
+  end
+
   def self.get_my_ip
     response = Net::HTTP.get_response(URI(config.ip_url))
     if response.code.to_i == 200
@@ -36,7 +40,8 @@ module LinodeDynamicDns
 
   def self.update_record_ip(domain_id, record_id, ip)
     api.domain.resource.update(:DomainId => domain_id,
-                                   :ResourceId => record_id,
-                                   :Target => ip)
+                               :ResourceId => record_id,
+                               :TTL_sec => ttl,
+                               :Target => ip)
   end
 end

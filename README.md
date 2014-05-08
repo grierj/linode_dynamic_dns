@@ -18,7 +18,7 @@ And edit the fields in that config file.  The comments should explain what's goi
 
 ## Setting up your DNS
 
-In your Linode DNS manager pick the "Domain Zone" you want to put the record in.  This is what goes in the "domain" section of the config file, btw.  In that zone add a new A record.  Set the TTL to 5 minutes (the lowest linode allows).  Set the IP to something like 127.0.0.1 for now, it'll get updated via the script later.  The name of this A record is what goes in the "record" section of the config.
+In your Linode DNS manager pick the "Domain Zone" you want to put the record in.  This is what goes in the "domain" section of the config file, btw.  In that zone add a new A record.  Set the IP to something like 127.0.0.1 for now, it'll get updated via the script later.  The name of this A record is what goes in the "record" section of the config.
 
 ## Usage
 

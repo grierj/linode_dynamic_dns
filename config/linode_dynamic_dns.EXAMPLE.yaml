@@ -14,5 +14,7 @@ domain: example.com
 # The name of the record, "home" or "dyn" or something like that works
 record: dyn
 
-
+# The DNS TTL for this entry, in seconds.  You probably want to leave this
+# at 300
+ttl: 300
 
