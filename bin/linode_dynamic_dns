@@ -2,15 +2,30 @@
 #
 require 'linode'
 require 'linode_dynamic_dns'
+require 'optparse'
+
+@verbose = false
+
+optparse = OptionParser.new do |opts|
+  opts.on('-v', '--verbose', "Print verbose output") do
+    @verbose = true
+  end
+  opts.on('-c', '--config CONFIG', "Specify a config file") do |arg|
+    @config = File.expand_path(arg)
+  end
+end
+optparse.parse!
+
+LinodeDynamicDns.set_config(@config) if @config
 
 my_ip = LinodeDynamicDns.get_my_ip
-puts "My IP is #{my_ip}"
+puts "My IP is #{my_ip}" if @verbose
 domain_id = LinodeDynamicDns.get_domain_id
-puts "My Domain ID is #{domain_id}"
+puts "My Domain ID is #{domain_id}" if @verbose
 record_id = LinodeDynamicDns.get_record_id(domain_id)
-puts "My Record ID is #{record_id}"
+puts "My Record ID is #{record_id}" if @verbose
 LinodeDynamicDns.update_record_ip(domain_id, record_id, my_ip)
-puts "Updated #{LinodeDynamicDns.config.record}.#{LinodeDynamicDns.config.domain} to #{my_ip}"
+puts "Updated #{LinodeDynamicDns.config.record}.#{LinodeDynamicDns.config.domain} to #{my_ip}" if @verbose
 
 
 
