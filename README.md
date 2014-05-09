@@ -43,6 +43,7 @@ Run the updater like:
     linode_dynamic_dns -c ~/linode_dynamic_dns.yaml -v
 
 If you don't like the status messages, remove the -v
+
 If you put your config file somewhere else, update the path
 
 ### Bundler
