@@ -4,6 +4,9 @@
 # that's the DNS this updates :)
 ip_url: "http://hellspenguins.org/cgi-bin/ip.rb"
 
+# Track your IP so we only make linode API calls if it changes
+ip_file: "/tmp/linode_last_ip"
+
 # This is your API key.  It's secret.  Don't check it into git.  You can
 # get your API key from https://manager.linode.com/profile/api
 api_key: abcd1234

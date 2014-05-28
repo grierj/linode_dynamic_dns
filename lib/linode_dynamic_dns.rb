@@ -11,12 +11,33 @@ module LinodeDynamicDns
     config.ttl || 300
   end
 
+  def self.ip_file
+    if config.ip_file
+      config.ip_file = File.expand_path(config.ip_file)
+    end
+    config.ip_file || '/tmp/linode_last_ip'
+  end
+
   def self.get_my_ip
     response = Net::HTTP.get_response(URI(config.ip_url))
     if response.code.to_i == 200
       response.body
     else
       raise "Got bad response code #{response.code}"
+    end
+  end
+
+  def self.get_last_ip
+    if File.exist?(ip_file)
+      File.read(ip_file).chomp
+    else
+      nil
+    end
+  end
+
+  def self.set_last_ip(ip)
+    File.open(ip_file, 'w') do |fh|
+      fh.write(ip)
     end
   end
 
